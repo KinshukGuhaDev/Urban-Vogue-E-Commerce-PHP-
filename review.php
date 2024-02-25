@@ -1,7 +1,9 @@
+<!-- <script>alert("HI");</script> -->
 <?php
 session_start();
 include "db.php";
-if (isset($_POST["review"])) {
+
+if (isset($_POST["review_submit"])) {
 
 	$name = $_POST["name"];
 	$email = $_POST["email"];
@@ -22,19 +24,28 @@ if (isset($_POST["review"])) {
 			";
 			exit();
 		}else{
-			$sql = "INSERT INTO `reviews` (`review_id`, `product_id`, `name`, `email`, `review`, `datetime`, `rating`) 
-			VALUES  (NULL, '$product_id','$name', '$email', 
+			$sql = "INSERT INTO `reviews` ( `product_id`, `name`, `email`, `review`, `datetime`, `rating`) 
+			VALUES  ( '$product_id','$name', '$email', 
 			'$review','$datetime', '$rating')";
 			
 			if(mysqli_query($con,$sql)){
 				echo "Thanks for Better reach ";
-				echo "<script> location.href='product.php?q=$product_id'; </script>";
+				flush(); // Flush the output buffer to ensure the text is immediately displayed
+				
+				// Wait for 5 seconds
+				sleep(5);
+				
+				// Clear the output
+				echo "\033[2J\033[;H";
+				echo "<script> location.href='product.php?p=$product_id'; </script>";
 				exit;
 			}else {
 				echo "something went wrong";
 			}
 		}
 	
+}else{
+	echo "WRONG REQUEST";
 }
 
 

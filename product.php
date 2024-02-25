@@ -1,3 +1,4 @@
+<!-- <script src="js/somejs.js"></script> -->
 <?php
 include "header.php";
 ?>
@@ -154,7 +155,7 @@ include "header.php";
 										<div class="qty-label">
 											Qty
 											<div class="input-number">
-												
+											<input type="number" id="qty" value="1" min="1" max="999" onchange="updateQtyValue()">
 												<span class="qty-up">+</span>
 												<span class="qty-down">-</span>
 											</div>
@@ -188,10 +189,27 @@ include "header.php";
 							</div>
 							';
 							$_SESSION['product_id'] = $row['product_id'];
+							// echo $_SESSION['product_id'];
 							}
-						} 
-						?>		
+						}
+						?>
+						<input type="hidden" name="valu" id="valu" value="<?php echo $_SESSION['product_id'];?>">
+						<?php
+						// Check if the quantity value is received
+						// session_start();
+
+						// if(isset($_GET['qtyValue'])) {
+						// 	$_SESSION['qty'] = $_GET['qtyValue'];
+						// 	echo json_encode("Quantity value stored in session.");
+						// } else {
+						// 	echo "Quantity value not received.";
+						// }
+						// ?>		
 					
+					<!-- <script>var prod = $('#valu').val();
+					// Send the quantity value to the server using AJAX
+					
+					</script> -->
 					
 					<div class="col-md-12">
 						<div id="product-tab">
@@ -244,15 +262,15 @@ include "header.php";
 										<!-- Review Form -->
 										<div class="col-md-3 mainn">
 											<div id="review-form">
-												<form class="review-form" onsubmit="return false" id="review_form" required>
+												<form class="review-form" action="review.php" method="POST"  id="review" required>
 													<input class="input" type="text" name="name" placeholder="Your Name" required>
 													<input class="input" type="email" name="email" placeholder="Your Email" required>
 													<?php 
 														$product_id = $_GET['p'];
-														echo'<input  name="product_id" value="'.$product_id.'" hidden required>'
+														echo'<input  name="product_id" value="'.$product_id.'" hidden >'
 													?>
 													
-													<textarea class="input" name="review" placeholder="Your Review"></textarea>
+													<textarea class="input" name="review" placeholder="Your Review"required></textarea>
 													<div class="input-rating">
 														<span>Your Rating: </span>
 														<div class="stars">
@@ -375,7 +393,7 @@ include "header.php";
 					<!-- product -->
 					
 					<!-- /product -->
-
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 				</div>
 				<!-- /row -->
                 

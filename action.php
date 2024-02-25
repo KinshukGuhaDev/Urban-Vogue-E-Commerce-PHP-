@@ -252,7 +252,7 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 		}
 	}
 	
-
+ 
 
 	if(isset($_POST["addToCart"])){
 		
@@ -263,6 +263,7 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 		if(isset($_SESSION["uid"])){
 
 		$user_id = $_SESSION["uid"];
+		$
 
 		$sql = "SELECT * FROM cart WHERE p_id = '$p_id' AND user_id = '$user_id'";
 		$run_query = mysqli_query($con,$sql);
@@ -277,7 +278,7 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 		} else {
 			$sql = "INSERT INTO `cart`
 			(`p_id`, `ip_add`, `user_id`, `qty`) 
-			VALUES ('$p_id','$ip_add','$user_id','1')";
+			VALUES ('$p_id','$ip_add','$user_id','$_SESSION[qty]')";
 			if(mysqli_query($con,$sql)){
 				$sql = "DELETE FROM wishlist WHERE p_id = '$p_id' AND user_id = '$_SESSION[uid]'";
 			
@@ -530,7 +531,7 @@ if (isset($_POST["Common"])) {
 				            <input type="hidden" name="" value="'.$cart_item_id.'"/>
 							<td data-th="Price"><input type="text" class="form-control price" value="'.$product_price.'" readonly="readonly"></td>
 							<td data-th="Quantity">
-								<input type="text"  class="form-control qty" value="'.$qty.'" >
+								<input type="text" disabled  class="form-control qty" value="'.$qty.'" >
 							</td>
 							<td data-th="Subtotal" class="text-center"><input type="text" class="form-control total" value="'.$product_price.'" readonly="readonly"></td>
 							<td class="actions" data-th="">
