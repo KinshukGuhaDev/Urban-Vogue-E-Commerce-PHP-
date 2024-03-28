@@ -185,7 +185,7 @@ session_start();
                                         Online Shop
                                     </font> -->
 									<div class="logo"><a href="index.php" class="simple-text logo-normal">
-										<img src="admin/admin/assets/img/capture.png" style="width: 250px;height : 180px;">
+										<img src="admin/admin/assets/img/capture.png" style="width: 250px;border-radius:20px;height : 180px;">
 									</a></div> 
 								</a>
 							</div>

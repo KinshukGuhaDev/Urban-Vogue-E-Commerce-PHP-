@@ -574,7 +574,7 @@ if (isset($_POST["Common"])) {
 					echo '
 					</form>
 					
-						<form action="checkout.php" method="post">
+						<form action="razorpay.php" method="post">
 							<input type="hidden" name="cmd" value="_cart">
 							<input type="hidden" name="business" value="shoppingcart@support.com">
 							<input type="hidden" name="upload" value="1">';
